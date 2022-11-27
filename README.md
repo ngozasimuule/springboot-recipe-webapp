@@ -2,7 +2,7 @@
 
 
 
-MySql Queries to add to MySql Workbench to help operate CRUD Operations:
+MOCK DATA OF MySql Queries to add to MySql Workbench to help operate CRUD Operations:
 
 INSERT INTO QUERY PLUS ALTER TABLE IN SAME FILE/TAB TO EXECUTE QUERY: 
 
