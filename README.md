@@ -1,6 +1,6 @@
 # springboot-recipe-webapp
 
-
+Technologies used: Maven, Spring Boot, Intellij Idea, Java, MySql in MySql Workbench.
 
 MOCK DATA OF MySql Queries to add to MySql Workbench to help operate CRUD Operations:
 
