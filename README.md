@@ -4,6 +4,8 @@
 
 MySql Queries to add to MySql Workbench to help operate CRUD Operations:
 
+INSERT INTO QUERY PLUS ALTER TABLE IN SAME FILE/TAB TO EXECUTE QUERY: 
+
 INSERT INTO `recipes` VALUES 
 (1,' Content goes here','2022-07-18 10:45:18.617432','In this blog post, you will important OOPS concepts in Java with examples','OOPS Concepts in Java','2022-07-18 10:45:18.617561','2022-07-18 10:45:18.617561','oops-concepts-in-java' ),
 (2,' Content goes here','2022-07-18 10:45:18.630278','In this blog post, you will learn about Variables in Java with examples','Variables in Java','2022-07-18 10:45:18.630297','2022-07-18 10:45:18.617561','variables-in-java'),
