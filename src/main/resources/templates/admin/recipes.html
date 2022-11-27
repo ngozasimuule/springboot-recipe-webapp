@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org"
+>
+<div th:replace="~{admin/header :: header}"></div>
+<body>
+
+<div th:replace="~{admin/header :: navbar}"></div>
+   <div class="container">
+     <div class="row">
+       <h1>List Recipes</h1>
+   <table class="table table-stripped table-hover table-bordered">
+     <thead class="table-dark">
+     <th style="width: 10%">#</th>
+     <th style="width: 10%">Recipe Name</th>
+     <th style="width: 20%">Recipe Short Description Ingredients</th>
+     <th style="width: 20%">Recipe Instructions</th>
+     <th style="width: 20%">Recipe Created On</th>
+     <th style="width: 20%">Actions</th>
+     </thead>
+     <tbody>
+      <tr th:each = "recipe, postStat: ${recipes}">
+        <td th:text="${postStat.count}">1</td>
+        <td th:text="${recipe.name}">recipe name</td>
+        <td th:text="${recipe.shortDescriptionIngredients}">recipe short description ingredients</td>
+        <td th:text="${recipe.instructions}">recipe short description ingredients</td>
+        <td th:text="${recipe.createdOn}">recipe created date</td>
+        <td>
+            <a th:href="@{/admin/recipes/{recipeId}/edit(recipeId=${recipe.id})}" class="btn btn-primary"> Edit</a>
+        </td>
+      </tr>
+     </tbody>
+   </table>
+ </div>
+   </div>
+<br /><br /><br /><br /><br /><br />
+<div th:replace="~{admin/footer :: footer}"></div>
+</body>
+</html>

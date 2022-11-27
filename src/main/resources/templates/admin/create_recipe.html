@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{admin/header :: header}"></div>
+<body>
+<div th:replace="~{admin/header :: navbar}"></div>
+<br/><br/>
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center"> Create Recipe</h2>
+            </div>
+            <div class="card-body">
+                <form role="form" method="post" th:action="@{/admin/recipes}" th:object="${recipe}">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                placeholder="Enter recipe name"
+                                name="name"
+                                th:field="*{name}"
+                        />
+                        <p th:if="${#fields.hasErrors('name')}" class="text-danger"
+                           th:errors="*{name}"></p>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Short Description Ingredients</label>
+
+                        <textarea
+                                class="form-control"
+                                id="shortDescriptionIngredients"
+                                placeholder="Enter recipe short description ingredients"
+                                rows="3"
+                                name="shortDescriptionIngredients"
+                                th:field="*{shortDescriptionIngredients}"
+                        >
+
+                        </textarea>
+                        <p th:if="${#fields.hasErrors('shortDescriptionIngredients')}" class="text-danger"
+                           th:errors="*{shortDescriptionIngredients}"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Content</label>
+                        <textarea
+                                class="form-control"
+                                id="content"
+                                placeholder="Enter recipe content"
+                                rows="3"
+                                name="content"
+                                th:field="*{content}"
+                        >
+                        </textarea>
+                        <p th:if="${#fields.hasErrors('content')}" class="text-danger"
+                           th:errors="*{content}"></p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/><br/><br/><br/><br/>
+<div th:replace="~{admin/footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+
+
+<script>
+                    ClassicEditor
+                        .create( document.querySelector( '#content' ) )
+                        .then( editor => {
+                            console.log( editor );
+                        } )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+            </script>
+</body>
+</html>
