@@ -2,7 +2,7 @@
 
 1. Import File into Intellij Idea after Downloading and extracting zip file.
 
-   N.B: Technologies used: Maven, Spring Boot Initialliser, Intellij Idea, Java, MySql in MySql Workbench.
+   N.B: Technologies used: Maven, Spring Boot Initialliser, Intellij Idea, Java, Html, MySql in MySql Workbench.
 
 2. MOCK DATA for MySql Queries to add to MySql Workbench to help operate CRUD Operations:
 
