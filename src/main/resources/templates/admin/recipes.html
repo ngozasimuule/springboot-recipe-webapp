@@ -6,9 +6,32 @@
 <body>
 
 <div th:replace="~{admin/header :: navbar}"></div>
+<br><br/>
    <div class="container">
      <div class="row">
        <h1>List Recipes</h1>
+     </div>
+       <div class="row">
+           <div class="col-md-5">
+           <div class="form-group">
+               <form class="form-inline" th:action="@{/admin/recipes/search}">
+                   <div class="input-group">
+                       <input type="text" class="form-control" name="query" />
+                       <span class="input-group-btn">
+                           <button class="btn btn-primary" type="submit">Search</button>
+                       </span>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br />
+
    <table class="table table-stripped table-hover table-bordered">
      <thead class="table-dark">
      <th style="width: 10%">#</th>
@@ -23,17 +46,19 @@
         <td th:text="${postStat.count}">1</td>
         <td th:text="${recipe.name}">recipe name</td>
         <td th:text="${recipe.shortDescriptionIngredients}">recipe short description ingredients</td>
-        <td th:text="${recipe.instructions}">recipe short description ingredients</td>
-        <td th:text="${recipe.createdOn}">recipe created date</td>
+        <td th:text="${recipe.instructions}">recipe instructions</td>
+        <td th:text="${#temporals.format(recipe.createdOn,'dd MMM yyyy')}">10 JUL 2022</td>
         <td>
             <a th:href="@{/admin/recipes/{recipeId}/edit(recipeId=${recipe.id})}" class="btn btn-primary"> Edit</a>
+            <a th:href="@{/admin/recipes/{recipeId}/delete(recipeId=${recipe.id})}" class="btn btn-danger">Delete</a>
+            <a th:href="@{/admin/recipes/{recipeUrl}/view(recipeUrl=${recipe.url})}" class="btn btn-info">View</a>
         </td>
       </tr>
      </tbody>
    </table>
  </div>
    </div>
-<br /><br /><br /><br /><br /><br />
+<br /><br />
 <div th:replace="~{admin/footer :: footer}"></div>
 </body>
 </html>

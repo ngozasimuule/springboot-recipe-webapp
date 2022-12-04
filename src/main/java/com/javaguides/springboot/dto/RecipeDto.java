@@ -19,8 +19,6 @@ public class RecipeDto {
     private String name;
     private String url;
     @NotEmpty
-    private String content;
-    @NotEmpty
     private String shortDescriptionIngredients;
     private String instructions;
     private LocalDateTime createdOn;

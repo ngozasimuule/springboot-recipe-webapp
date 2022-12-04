@@ -6,10 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -32,7 +29,7 @@ public class RecipeController {
 
     }
 
-    // handler method to handle new post request
+    // handler method to handle new recipe request
     @GetMapping("admin/recipes/newrecipe")
     public String newRecipeForm(Model model){
         RecipeDto recipeDto = new RecipeDto();
@@ -68,6 +65,53 @@ public class RecipeController {
 
     }
 
+    //handler method to handle edit recipe form submit request
+    @PostMapping("/admin/recipes/{recipeId}")
+    public String updateRecipe(@PathVariable("recipeId") Long recipeId,
+                              @Valid @ModelAttribute("recipe") RecipeDto recipe,
+                                BindingResult result,
+                               Model model){
+
+        if(result.hasErrors()){
+            model.addAttribute("recipe", recipe);
+            return "admin/edit_recipe";
+        }
+
+        recipe.setId(recipeId);
+        recipeService.updateRecipe(recipe);
+        return "redirect:/admin/recipes";
+
+    }
+
+
+    //handler method to handle delete recipe request
+    @GetMapping("/admin/recipes/{recipeId}/delete")
+    public String deleteRecipe(@PathVariable("recipeId") Long recipeId){
+        recipeService.deleteRecipe(recipeId);
+        return "redirect:/admin/recipes";
+    }
+
+    //handler method to handle view recipe request
+    @GetMapping("/admin/recipes/{recipeUrl}/view")
+    public String viewRecipe(@PathVariable("recipeUrl") String recipeUrl,
+                   Model model ){
+        RecipeDto recipeDto = recipeService.findRecipeByUrl(recipeUrl);
+        model.addAttribute("recipe", recipeDto);
+        return "admin/view_recipe";
+
+    }
+
+
+    //handler method to search recipe request
+    //localhost:8080/admin/recipes/search?query=java
+    @GetMapping("/admin/recipes/search")
+    public String searchRecipes(@RequestParam(value = "query") String query,
+                                Model model){
+        List<RecipeDto> recipes = recipeService.searchRecipes(query);
+        model.addAttribute("recipes", recipes);
+        return "admin/recipes";
+
+    }
     private static String getUrl(String recipeName){
         //OOPS Concepts Explained in Java
         // oop-concepts-explained-in-java

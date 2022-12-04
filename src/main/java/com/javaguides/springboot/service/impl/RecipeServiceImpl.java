@@ -38,4 +38,30 @@ public class RecipeServiceImpl implements RecipeService {
         return RecipeMapper.mapToRecipeDto(recipe);
     }
 
+    @Override
+    public List<RecipeDto> searchRecipes(String query) {
+        List<Recipe> recipes = recipeRepository.searchRecipes(query);
+        return recipes.stream()
+                .map(RecipeMapper::mapToRecipeDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateRecipe(RecipeDto recipeDto) {
+        Recipe recipe = RecipeMapper.mapToRecipe(recipeDto);
+        recipeRepository.save(recipe);
+
+    }
+
+    @Override
+    public void deleteRecipe(Long recipeId) {
+        recipeRepository.deleteById(recipeId);
+    }
+
+    @Override
+    public RecipeDto findRecipeByUrl(String recipeUrl) {
+        Recipe recipe = recipeRepository.findByUrl(recipeUrl).get();
+        return RecipeMapper.mapToRecipeDto(recipe);
+    }
+
 }

@@ -25,9 +25,10 @@ public class Recipe {
     private String url;
 
     @Lob
-    @Column(nullable = false)
+    @Column(name = "shortDescriptionIngredients", columnDefinition = "BLOB", nullable = false)
     private String shortDescriptionIngredients;
-    private String content;
+    @Lob
+    @Column(name = "instructions",columnDefinition = "BLOB", nullable = false)
     private String instructions;
 
     @CreationTimestamp

@@ -12,8 +12,7 @@
         <h2 class="text-center"> Edit Recipe</h2>
       </div>
       <div class="card-body">
-        <form role="form" method="post" th:action="@{/admin/recipes}" th:object="${recipe}">
-              <input type="hidden" th:field="*{id}">
+        <form role="form" method="post" th:action="@{/admin/recipes/{recipeId}(recipeId=${recipe.id})}" th:object="${recipe}">
               <input type="hidden" th:field="*{url}">
               <input type="hidden" th:field="*{createdOn}">
               <div class="mb-3">
@@ -47,18 +46,18 @@
                th:errors="*{shortDescriptionIngredients}"></p>
           </div>
           <div class="mb-3">
-            <label class="form-label">Content</label>
+            <label class="form-label">Instructions</label>
             <textarea
                     class="form-control"
-                    id="content"
-                    placeholder="Enter recipe content"
+                    id="instructions"
+                    placeholder="Enter recipe instructions"
                     rows="3"
-                    name="content"
-                    th:field="*{content}"
+                    name="instructions"
+                    th:field="*{instructions}"
             >
                         </textarea>
-            <p th:if="${#fields.hasErrors('content')}" class="text-danger"
-               th:errors="*{content}"></p>
+            <p th:if="${#fields.hasErrors('instructions')}" class="text-danger"
+               th:errors="*{instructions}"></p>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -77,7 +76,7 @@
 
 <script>
   ClassicEditor
-          .create( document.querySelector( '#content' ) )
+          .create( document.querySelector( '#instructions' ) )
           .then( editor => {
             console.log( editor );
           } )
@@ -85,5 +84,7 @@
             console.error( error );
           } );
 </script>
+<br/><br/><br/><br/><br/><br/>
+<div th:replace="~{admin/footer :: footer}"></div>
 </body>
 </html>

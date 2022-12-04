@@ -10,4 +10,12 @@ public interface RecipeService {
     void createRecipe(RecipeDto recipeDto);
 
     RecipeDto findRecipeById(Long recipeId);
+
+    void updateRecipe(RecipeDto recipeDto);
+
+    void deleteRecipe(Long recipeId);
+
+    RecipeDto findRecipeByUrl(String recipeUrl);
+
+    List<RecipeDto> searchRecipes(String query);
 }
