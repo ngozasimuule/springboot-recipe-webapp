@@ -9,7 +9,7 @@
 <br /><br />
 <div class="container">
     <div class="row">
-      <div class="=col-md-9">
+      <div class="col-md-9">
           <div th:each= "recipe: ${recipesResponse}">
               <div class="card">
                   <div class="card-header">
@@ -22,27 +22,22 @@
 
                           </strong>
                       </div>
-
                   </div>
                   <div class="card-body">
                       <span th:utext="${recipe.shortDescriptionIngredients}"> </span>
                       <a th:href="@{/recipe/{recipeUrl}(recipeUrl=${recipe.url})}">Read more</a>
-
                   </div>
-
               </div>
               <br />
-
           </div>
-
       </div>
-        <div class="=col-md-3">
-            <!-- search bar --->
-            <div th:replace="~{client/search :: search}"></div>
-        </div>
-    </div>
+<div class="col-md-3">
+    <!-- search bar goes here -->
+    <div th:replace="~{client/search :: search}"></div>
 </div>
-<br /><br /><br />
-<div th:replace="~{client/footer ::footer}"></div>
+</div>
+</div>
+<br /><br /><br /><br /><br/>
+<div th:replace="~{client/footer :: footer}"></div>
 </body>
 </html>

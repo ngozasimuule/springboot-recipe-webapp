@@ -2,7 +2,6 @@ package com.javaguides.springboot.controller;
 
 import com.javaguides.springboot.dto.RecipeDto;
 import com.javaguides.springboot.service.RecipeService;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,13 +31,15 @@ public class ClientController {
 
     // handler method to handle view recipe request
     @GetMapping("/recipe/{recipeUrl}")
-    private  String showRecipe(@PathVariable("recipeUrl") String recipeUrl,
+    private String showRecipe(@PathVariable("recipeUrl") String recipeUrl,
                                Model model){
         RecipeDto recipe = recipeService.findRecipeByUrl(recipeUrl);
         model.addAttribute("recipe", recipe);
         return "client/client_recipe";
 
     }
+
+
     // handler method to handle client recipe search request
     // http://localhost:8080/page/search?query=java
     @GetMapping("/page/search")

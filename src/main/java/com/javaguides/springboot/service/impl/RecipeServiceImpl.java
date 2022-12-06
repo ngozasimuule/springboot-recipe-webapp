@@ -39,14 +39,6 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public List<RecipeDto> searchRecipes(String query) {
-        List<Recipe> recipes = recipeRepository.searchRecipes(query);
-        return recipes.stream()
-                .map(RecipeMapper::mapToRecipeDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public void updateRecipe(RecipeDto recipeDto) {
         Recipe recipe = RecipeMapper.mapToRecipe(recipeDto);
         recipeRepository.save(recipe);
@@ -62,6 +54,14 @@ public class RecipeServiceImpl implements RecipeService {
     public RecipeDto findRecipeByUrl(String recipeUrl) {
         Recipe recipe = recipeRepository.findByUrl(recipeUrl).get();
         return RecipeMapper.mapToRecipeDto(recipe);
+    }
+
+    @Override
+    public List<RecipeDto> searchRecipes(String query) {
+        List<Recipe> recipes = recipeRepository.searchRecipes(query);
+        return recipes.stream()
+                .map(RecipeMapper::mapToRecipeDto)
+                .collect(Collectors.toList());
     }
 
 }
