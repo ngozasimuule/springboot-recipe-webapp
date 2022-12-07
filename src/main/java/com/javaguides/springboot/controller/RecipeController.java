@@ -101,7 +101,6 @@ public class RecipeController {
 
     }
 
-
     //handler method to search recipe request
     //localhost:8080/admin/recipes/search?query=java
     @GetMapping("/admin/recipes/search")
